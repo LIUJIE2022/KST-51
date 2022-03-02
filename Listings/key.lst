@@ -1,0 +1,75 @@
+C51 COMPILER V9.54   KEY                                                                   03/02/2022 22:50:38 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE KEY
+OBJECT MODULE PLACED IN .\Objects\key.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE key.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\key.l
+                    -st) TABS(2) OBJECT(.\Objects\key.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          
+   3          sbit ADDR0 = P1^0;
+   4          sbit ADDR1 = P1^1;
+   5          sbit ADDR2 = P1^2;
+   6          sbit ADDR3 = P1^3;
+   7          sbit ENLED = P1^4;
+   8          
+   9          sbit KEY1 = P2^4;
+  10          sbit KEY2 = P2^5;
+  11          sbit KEY3 = P2^6;
+  12          sbit KEY4 = P2^7;
+  13          
+  14          sbit LED9 = P0^7;
+  15          sbit LED8 = P0^6;
+  16          sbit LED7 = P0^5;
+  17          sbit LED6 = P0^4;
+  18          unsigned char code LedChar[] = {
+  19              0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,
+  20              0x80,0x90,0x88,0x83,0xC6,0xA1,0x86,0x8E
+  21          };
+  22          void main()
+  23          {
+  24   1          bit backup = 1;
+  25   1          unsigned char cnt = 0;
+  26   1          ADDR0 = 0;
+  27   1          ADDR1 = 0;
+  28   1          ADDR2 = 1 ;
+  29   1          ADDR3 = 1;
+  30   1          ENLED = 0;
+  31   1          P2 = 0xF7;
+  32   1          P0 = LedChar[cnt];
+  33   1          while(1)
+  34   1          {
+  35   2              if(KEY4 != backup)
+  36   2              {
+  37   3                  if(0 == backup)
+  38   3                  {
+  39   4                      cnt++;
+  40   4                      if(cnt >= 10)
+  41   4                      {
+  42   5                          cnt = 0;
+  43   5                      }
+  44   4                      P0 = LedChar[cnt];
+  45   4                  }
+  46   3                  backup = KEY4;
+  47   3              }
+  48   2          }
+  49   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     56    ----
+   CONSTANT SIZE    =     16    ----
+C51 COMPILER V9.54   KEY                                                                   03/02/2022 22:50:38 PAGE 2   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
