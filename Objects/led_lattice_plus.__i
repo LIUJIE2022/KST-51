@@ -1,0 +1,1 @@
+"led_lattice_plus.c" OPTIMIZE (8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\led_lattice_plus.lst) TABS (2) OBJECT(.\Objects\led_lattice_plus.obj)

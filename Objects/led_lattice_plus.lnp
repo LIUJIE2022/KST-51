@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\led_lattice_plus.obj" 
+TO ".\Objects\led_lattice_plus" 
+PRINT(".\Listings\led_lattice_plus.m51") RAMSIZE(256) 
