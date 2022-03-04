@@ -15,6 +15,8 @@ sbit LED9 = P0^7;
 sbit LED8 = P0^6;
 sbit LED7 = P0^5;
 sbit LED6 = P0^4;
+
+void delay();
 unsigned char code LedChar[] = {
 		0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,
     0x80,0x90,0x88,0x83,0xC6,0xA1,0x86,0x8E
@@ -22,10 +24,11 @@ unsigned char code LedChar[] = {
 void main()
 {
 		bit backup = 1;
+		bit KeyBuf = 1;
 		unsigned char cnt = 0;
 		ADDR0 = 0;
 		ADDR1 = 0;
-		ADDR2 = 1 ;
+		ADDR2 = 0 ;
 		ADDR3 = 1;
 		ENLED = 0;
 		P2 = 0xF7;
@@ -46,4 +49,8 @@ void main()
 						backup = KEY4;
 				}
 		}
+}
+void delay()
+{
+		unsigned char i = 1000;
 }
